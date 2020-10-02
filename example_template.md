@@ -4,7 +4,7 @@
 * Author:
 * Created:
 * License: CC0
-* Ergo Playground Link: [url](scastie_ergo_playground_url)
+* Ergo Playground Link: [Title](scastie_ergo_playground_url)
 
 Description
 ----------

@@ -5,8 +5,8 @@ Each contract example includes a `Ergo Playground` link which allows you to inst
 
 
 ## Table Of Contents
-- [ErgoScript Examples](#Ergoscript-examples)
-- [How To Contribute](#how-to-contribute)
+- [ErgoScript Examples](<#Ergoscript-examples>)
+- [How To Contribute](<#how-to-contribute>)
 
 
 
@@ -29,6 +29,6 @@ All examples submitted must:
 - Follow the [example template](example_template.md). (Ensure you include your scastie Ergo Playground url in both links)
 - Have an understandable/relevant title + filename
 
-Simply create a PR with your new `exampleTitle.md` file added to the repo + this `README.md` updated with your example added to the list of [ErgoScript Examples](#Ergoscript-examples).
+Simply create a PR with your new `exampleTitle.md` file added to the repo + this `README.md` updated with your example added to the list of [ErgoScript Examples](<#Ergoscript-examples>).
 
 If you are unsure about anything feel free to reference the [first example contract](pinLockContract.md) and/or join the [Ergo Discord](https://discord.gg/kj7s7nb) to ask questions.

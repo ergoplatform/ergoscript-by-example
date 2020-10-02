@@ -4,13 +4,13 @@ Pin Lock Contract
 * Author: Robert Kornacki
 * Created: October 2 2020
 * License: CC0
-* Ergo Playground Link: [Pin Lock Contract](https://scastie.scala-lang.org/9FT7OPv7Qki6HKiTH8UxVw)
+* Ergo Playground Link: [Pin Lock Contract](https://scastie.scala-lang.org/KdWtOMjrTx2zb7wr2shPAA)
 
 Description
 ----------
 This is a simple smart contract which locks deposited funds under a pin number. When the pin number is initially provided by the user, it is hashed off-chain, and the hash itself is stored on-chain.
 
-When the user wishes to swithdraw his funds(spend the utxo locked under this contract) he/she submits a `withdrawTransaction` with the actual pin number in a register of the output utxo. The contract then executes and checks that when the newly provided pin number gets hashed, it is equal to the original hash held in the register of the box locked by the contract. If they are equal then the contract validates, and the transaction is accepted as being valid and added to the blockchain history.
+When the user wishes to withdraw his/her funds(spend the utxo locked under this contract) he/she submits a `withdrawTransaction` with the actual pin number in a register of the output utxo. The contract then executes and checks that when the newly provided pin number gets hashed, it is equal to the original hash held in the register of the box locked by the contract. If they are equal then the contract validates, and the transaction is accepted as being valid and added to the blockchain history.
 
 Do note, this contract is purely intended to be used as an educational example. It is completely insecure and should never be used on-chain. Bad actors can scan the mempool to find the pin number when the `withdrawTransaction` is posted, and then front-run by posting a tx with a higher tx fee + the same pin number, thereby stealing your locked funds. That said, this is a great simple contract to wet your feet with.
 
@@ -18,7 +18,8 @@ Do note, this contract is purely intended to be used as an educational example. 
 
 Code
 ----------
-#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/9FT7OPv7Qki6HKiTH8UxVw)
+#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/KdWtOMjrTx2zb7wr2shPAA)
+
 ```scala
 
 import org.ergoplatform.compiler.ErgoScalaCompiler._
@@ -43,7 +44,7 @@ val pinLockContract = ErgoScriptCompiler.compile(Map(), pinLockScript)
 
 // Build the P2S Address of the contract.
 // This is not needed for the code at hand, but is demonstrated here as a reference
-// to see how to acquire the P2S address so you can use this contract live.
+// to see how to acquire the P2S address so you can use contracts live on mainnet.
 val contractAddress = Pay2SAddress(pinLockContract.ergoTree)
 println("Pin Lock Contract Address: " + contractAddress)
 println("-----------")
@@ -55,7 +56,7 @@ println("-----------")
 ///////////////////////////////////////////////////////////////////////////////////
 // Create a simulated blockchain (aka "Mockchain")
 val blockchainSim = newBlockChainSimulationScenario("PinLock Scenario")
-// Define an actor/user (with a wallet tied to the Party)
+// Define an actor/user (with a wallet tied to said Party)
 val userParty = blockchainSim.newParty("buyer")
 // Define example user input
 val pinNumber = "1293"
@@ -100,11 +101,13 @@ println("-----------")
 // Withdraw Funds Locked Under Pin Lock Contract //
 ///////////////////////////////////////////////////////////////////////////////////
 // Create an output box which withdraws the funds to the user
+// Subtracts `MinTxFee` from value to account for tx fee which
+// must be paid.
 val withdrawBox      = Box(value = userFunds/2 - MinTxFee,
                           script = contract(userParty.wallet.getAddress.pubKey),
                           register = (R4 -> pinNumber.getBytes()))
 
-// Create the withdraw transaction
+// Create the withdrawTransaction
 val withdrawTransaction = Transaction(
       inputs       = List(depositTransactionSigned.outputs(0)),
       outputs      = List(withdrawBox),
@@ -117,7 +120,8 @@ println(withdrawTransaction)
 val withdrawTransactionSigned = userParty.wallet.sign(withdrawTransaction)
 // Submit the withdrawTransaction
 blockchainSim.send(withdrawTransactionSigned)
-// Print the user's wallet, which shows that the coins have been withdrawn (with same total as initial, minus MinTxFee * 2)
+
+// Print the user's wallet, which shows that the coins have been withdrawn (with same total as initial, minus the MinTxFee * 2)
 userParty.printUnspentAssets()
 println("-----------")
 ```

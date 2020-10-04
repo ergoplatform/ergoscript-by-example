@@ -3,6 +3,8 @@ Learn ErgoScript by reading example smart contracts powered by the Ergo Playgrou
 
 Each contract example includes a `Ergo Playground` link which allows you to instantly edit and run the smart contract code inside of your browser.
 
+If you are ever lost about how specific types/functions/operators work in ErgoScript, please reference the [ErgoScript Language Description](https://github.com/ScorexFoundation/sigmastate-interpreter/blob/develop/docs/LangSpec.md).
+
 
 ## Table Of Contents
 - [ErgoScript Examples](<#Ergoscript-examples>)

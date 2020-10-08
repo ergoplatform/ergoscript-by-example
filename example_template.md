@@ -14,7 +14,8 @@ Description
 
 Code
 ----------
-#### [Click Here To Run The Code Via The Ergo Playground](scastie_ergo_playground_url)
+[Click Here To Run The Code Via The Ergo Playground] (scastie_ergo_playground_url)
+
 ```scala
 
 ...

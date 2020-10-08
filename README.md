@@ -11,7 +11,6 @@ If you are ever lost about how specific types/functions/operators work in ErgoSc
 - [How To Contribute](<#how-to-contribute>)
 
 
-
 ## ErgoScript Examples
 
 | Number | Title |
@@ -19,10 +18,9 @@ If you are ever lost about how specific types/functions/operators work in ErgoSc
 | 1 | [Pin Lock Contract](pinLockContract.md) |
 
 
-
 ## How To Contribute
 
-We are always happy to include new high-quality examples within this repo if you are interested in contributing.
+We are always happy to include new community-submitted examples within this repo if you are interested in contributing.
 
 All examples submitted must:
 - Use the `Ergo Playground` via Scastie ([basic template here](https://scastie.scala-lang.org/Uylafp7eQFyrIZdlvtdM0g))

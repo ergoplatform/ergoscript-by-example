@@ -19,6 +19,7 @@ For an overarching summary of how everything in this repo works, please referenc
 | Number | Title |
 | ---  | ---  |
 | 1 | [Pin Lock Contract](pinLockContract.md) |
+| 2 | [Single-Chain Swap Contracts](singleChainSwap.md) |
 
 
 ## How To Contribute

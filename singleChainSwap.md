@@ -13,7 +13,7 @@ Consider, for example, Alice and Bob who want to exchange tokens: they agree tha
 Bob (also, the buyer) 60 tokens of type TKN in exchange for 100 Ergo tokens. As protocol can be aborted by any party,
 both also are willing to have possibility to refund value locked in swap order contracts.
 
-In the interactive example above, we're testing swap between Alice and Bob, as well as a refund (for Bob's order only).
+In the interactive example below, we're testing swap between Alice and Bob, as well as a refund (for Bob's order only).
 
 Code
 ----------

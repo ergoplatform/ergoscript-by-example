@@ -1,4 +1,4 @@
-Pin Lock Contract
+Single Chain Swap
 =================================
 
 * Author: Alexander Chepurnoy (aka kushti)
@@ -6,14 +6,19 @@ Pin Lock Contract
 * License: CC0
 * Ergo Playground Link: [Single Chain Swap Contract](https://scastie.scala-lang.org/nITjDPcjTzm79SClVAWaNg)
 
-In this example, we consider simplest single-chain swap contracts for buying and selling tokens for ergs.
-The swap contracts will be developed into complex DEX scenarios in follow-up examples.
+Description
+----------
+In this example, we explore the simplest single-chain swap contracts which allow buying and selling tokens for ergs.
 
-Consider, for example, Alice and Bob who want to exchange tokens: they agree that Alice (also, the seller) will give 
-Bob (also, the buyer) 60 tokens of type TKN in exchange for 100 Ergo tokens. As protocol can be aborted by any party,
-both also are willing to have possibility to refund value locked in swap order contracts.
+This example enables exchanging for fixed amounts, but a follow-up example will be released in the coming future which will explain how a full DEX is possible to be built out of this simpler starting point.
 
-In the interactive example below, we're testing swap between Alice and Bob, as well as a refund (for Bob's order only).
+For our example at hand, consider a scenario where Alice and Bob want to exchange their tokens/Ergs.
+They agree that Alice (the seller) will give Bob (the buyer) 60 tokens of type TKN in exchange for 100 Ergs.
+As the exchange can be aborted by either party,
+both desire to have possibility to get a "refund" by withdrawing
+their tokens/Ergs locked under the swap order contracts (if the other person fails to submit their half of the exchange).
+
+In the interactive example below, we explore how to do a test swap between Alice and Bob, as well as refund Bob's order which he submitted (in the case Alice does not submit her order).
 
 Code
 ----------

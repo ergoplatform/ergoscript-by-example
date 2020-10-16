@@ -4,7 +4,7 @@ Single Chain Swap
 * Author: Alexander Chepurnoy (aka kushti)
 * Created: October 15 2020
 * License: CC0
-* Ergo Playground Link: [Single Chain Swap Contract](https://scastie.scala-lang.org/nITjDPcjTzm79SClVAWaNg)
+* Ergo Playground Link: [Single Chain Swap Contract](https://scastie.scala-lang.org/dMErrDNqTJi6hOTiZa91lw)
 
 Description
 ----------
@@ -22,11 +22,10 @@ In the interactive example below, we explore how to do a test swap between Alice
 
 Code
 ----------
-#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/nITjDPcjTzm79SClVAWaNg)
+#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/dMErrDNqTJi6hOTiZa91lw)
 
 
 ```scala
-
 import org.ergoplatform.compiler.ErgoScalaCompiler._
 import org.ergoplatform.playgroundenv.utils.ErgoScriptCompiler
 import org.ergoplatform.playground._
@@ -41,6 +40,7 @@ import scorex.crypto.hash.{Blake2b256}
 // Create a simulated blockchain (aka "Mockchain")
 val blockchainSim = newBlockChainSimulationScenario("Single-Chain Swap Scenario")
 
+// Create a new token called "TKN"
 val token = blockchainSim.newToken("TKN")
 val tokenAmount = 60L
 
@@ -48,20 +48,21 @@ val tokenAmount = 60L
 // Define a buyer Bob (with a wallet)
 val buyer = blockchainSim.newParty("buyer Bob")
 
-// Define a seller Alice (with a wallet tied)
+// Define a seller Alice (with a wallet)
 val seller = blockchainSim.newParty("seller Alice")
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Single-chain Swap Contracts - Buy Contract                                    //
 ///////////////////////////////////////////////////////////////////////////////////
 
-// buyerPK part is refund path
-// Main path ensures that the box can be spent only in a transaction that produces an output with 60 tokens of type TKN and gives them to Bob 
-// (Bob can reclaim the box after). Moreover, the last condition (OUTPUTS(0).R4[Col[Byte]].get == SELF.id) ensures that if Boe has multiple such boxes 
+// The main spending path ensures that the box can be spent only in a transaction that produces an output with 60 tokens of type TKN and gives them to Bob 
+// (Bob can reclaim the box after). Moreover, the last condition (OUTPUTS(0).R4[Col[Byte]].get == SELF.id) ensures that if Bob has multiple of such boxes 
 // outstanding at a given time, each will produce a separate output that identifies the corresponding input.  
-// This condition prevents the following attack: if Bob has twosuch boxes outstanding but the last condition is not present, then they can be both used in a single
+// This condition prevents the following attack: if Bob has two of such boxes outstanding but the last condition is not present, then they can be both used in a single
 // transaction that contains just one output with 60 tokens of type “TKN” — the script of each input box will be individually satisfied, but Bob will get only 
 // half of what owed to him.
+// The buyerPK check is the refund spending path.
+
 
 val buyScript = s"""
   {
@@ -76,12 +77,17 @@ val buyScript = s"""
   }
 """.stripMargin
 
+// Compile the contract with an included `Map` which specifies what the values of given parameters are going to be hard-coded into the contract
 val buyTokensContract = ErgoScriptCompiler.compile(Map("tokenId" -> token.tokenId, 
                                                        "tokenAmount" -> tokenAmount,
                                                        "buyerPk" -> buyer.wallet.getAddress.pubKey
                                                       ), buyScript)
 
-// Define initial buyer Bob's balance
+///////////////////////////////////////////////////////////////////////////////////
+// Create Buy Order //
+///////////////////////////////////////////////////////////////////////////////////
+
+// Define initial buyer balance (Bob)
 val nanoergsInErg = 1000000000L 
 val buyerFunds = 200 * nanoergsInErg + (nanoergsInErg / 10) 
 
@@ -92,9 +98,7 @@ println("-----------")
 
 val buyOrderSize = 100 * nanoergsInErg
 
-///////////////////////////////////////////////////////////////////////////////////
-// Create Buy Order //
-///////////////////////////////////////////////////////////////////////////////////
+
 // Create an output box with the user's funds locked under the contract
 val buyOrderBox      = Box(value = buyOrderSize, 
                            script = buyTokensContract)
@@ -117,17 +121,11 @@ println("-----------")
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Create Sell Order //
-///////////////////////////////////////////////////////////////////////////////////
-
-val sellerFunds = 2 * nanoergsInErg
-
-// Generate initial userFunds in the user's wallet
-seller.generateUnspentBoxes(toSpend = sellerFunds, tokensToSpend = List(token -> tokenAmount))
-seller.printUnspentAssets()
+// Single-chain Swap Contracts - Sell Contract                                   //
+//////////////////////////////////////////////////////////////////////////////////
 
 
-// Sell order contract is very similar to buy order, just another output being used, and it should contain at least 100 ergs (100B nanoergs).   
+// Sell order contract is very similar to the buy order. It specifies that it should contain at least 100 ergs (100B nanoergs) in this case.   
 val sellScript = s"""
   {
   val defined = OUTPUTS(0).R2[Coll[(Coll[Byte], Long)]].isDefined && OUTPUTS(0).R4[Coll[Byte]].isDefined
@@ -141,15 +139,26 @@ val sellScript = s"""
   }
 """.stripMargin
 
+// Compile the contract
 val sellTokensContract = ErgoScriptCompiler.compile(Map("sellerPk" -> seller.wallet.getAddress.pubKey), sellScript)
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// Create Sell Order //
+///////////////////////////////////////////////////////////////////////////////////
+
+val sellerFunds = 2 * nanoergsInErg
+
+// Generate initial userFunds in the user's wallet
+seller.generateUnspentBoxes(toSpend = sellerFunds, tokensToSpend = List(token -> tokenAmount))
+seller.printUnspentAssets()
 
 
 // Create a sell order box with the Alice's funds locked under the contract
 val sellOrderBox      = Box(value = 1 * nanoergsInErg, 
                             token  = (token -> tokenAmount),
                             script = sellTokensContract)
-///////////////////////////////////////////////////////////////////////////////////
-
 
 // Create the sell order transaction which locks the users funds under the contract
 val sellOrderTransaction = Transaction(
@@ -171,11 +180,15 @@ blockchainSim.send(sellOrderTransactionSigned)
 seller.printUnspentAssets()
 println("-----------")
 
-// We flip a random coin and the whether doing refund (for the buyer's order only for simplicity's sake), or do the swap.
+// We flip a random coin and to randomly choose whether our simulation will do a refund or do a swap. (Resave to run the simulation again)
 val refund = scala.util.Random.nextBoolean
 
+///////////////////////////////////////////////////////////////////////////////////
+// Refund Order //
+///////////////////////////////////////////////////////////////////////////////////
 if (refund) {
-  println("=====Generating Refund for Buy Order")
+ 
+  println("===== Generating Refund for Buy Order =====")
   
   val buyBox = buyOrderTransactionSigned.outputs(0)
   
@@ -183,6 +196,7 @@ if (refund) {
   
   val fee = 1000000L
   
+  // Refund back to the buyer's public key
   val refundOut = Box(value = amt - fee, 
                       script = contract(buyer.wallet.getAddress.pubKey))
 
@@ -203,20 +217,26 @@ if (refund) {
   seller.printUnspentAssets()
   println("-----------")
   
-} else {
-  ///////////////////////////////////////////////////////////////////////////////////
-  // Matching Orders //
-  ///////////////////////////////////////////////////////////////////////////////////
+} 
+///////////////////////////////////////////////////////////////////////////////////
+// Matching Orders //
+///////////////////////////////////////////////////////////////////////////////////
+else {
 
+  println("===== Generating Order Matching Tx =====")
+
+  // Create the box which goes back to the buyer(Bob) which holds the Tokens
   val tknOut = Box(value = nanoergsInErg / 2, 
                  token  = (token -> tokenAmount),
                  register = (R4 -> buyOrderTransactionSigned.outputs(0).id),
                  script = contract(buyer.wallet.getAddress.pubKey))
 
+  // Create the box which goes back to the seller(Alice) which holds the Ergs
   val ergOut = Box(value = 100 * nanoergsInErg, 
                  register = (R4 -> sellOrderTransactionSigned.outputs(0).id),
                  script = contract(seller.wallet.getAddress.pubKey))
 
+  // Create the swap transaction
   val swapTransaction = Transaction(
       inputs = List(sellOrderTransactionSigned.outputs(0), buyOrderTransactionSigned.outputs(0)),
       outputs = List(tknOut, ergOut),
@@ -234,5 +254,4 @@ if (refund) {
   seller.printUnspentAssets()
   println("-----------")
 }
-
 ```

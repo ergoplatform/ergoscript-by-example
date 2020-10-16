@@ -4,6 +4,7 @@ Single Chain Swap
 * Author: Alexander Chepurnoy (aka kushti)
 * Created: October 15 2020
 * License: CC0
+* Difficulty: Intermediate
 * Ergo Playground Link: [Single Chain Swap Contract](https://scastie.scala-lang.org/dMErrDNqTJi6hOTiZa91lw)
 
 Description

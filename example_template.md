@@ -4,6 +4,7 @@
 * Author:
 * Created:
 * License: CC0
+* Difficulty: (Beginner/Intermediate/Expert)
 * Ergo Playground Link: [Title](scastie_ergo_playground_url)
 
 Description

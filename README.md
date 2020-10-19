@@ -16,9 +16,10 @@ For an overarching summary of how everything in this repo works, please referenc
 
 ## ErgoScript Examples
 
-| Number | Title |
-| ---  | ---  |
-| 1 | [Pin Lock Contract](pinLockContract.md) |
+| Number | Difficulty | Title |
+| ---  | ---  | ---  |
+| 1 | Beginner | [Pin Lock Contract](pinLockContract.md) |
+| 2 | Intermediate | [Single-Chain Swap Contracts](singleChainSwap.md) |
 
 
 ## How To Contribute

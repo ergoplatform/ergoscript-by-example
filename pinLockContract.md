@@ -4,6 +4,7 @@ Pin Lock Contract
 * Author: Robert Kornacki
 * Created: October 2 2020
 * License: CC0
+* Difficulty: Beginner
 * Ergo Playground Link: [Pin Lock Contract](https://scastie.scala-lang.org/KdWtOMjrTx2zb7wr2shPAA)
 
 Description

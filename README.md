@@ -11,6 +11,7 @@ For an overarching summary of how everything in this repo works, please referenc
 
 ## Table Of Contents
 - [ErgoScript Examples](<#Ergoscript-examples>)
+- [Extra Resources To Get Started](<#Extra-Resources-To-Get-Started>)
 - [How To Contribute](<#how-to-contribute>)
 
 
@@ -20,6 +21,20 @@ For an overarching summary of how everything in this repo works, please referenc
 | ---  | ---  | ---  |
 | 1 | Beginner | [Pin Lock Contract](pinLockContract.md) |
 | 2 | Intermediate | [Single-Chain Swap Contracts](singleChainSwap.md) |
+
+
+## Extra Resources To Get Started
+If you are unfamiliar with the Extended UTXO model, smart contracts, and Ergo specifics, the above examples may be a little bit challenging to jump straight into. As such the following links below are recommended available resources for getting a solid background in understanding what is going on. 
+
+1. [ErgoScript Whitepaper](https://ergoplatform.org/docs/ErgoScript.pdf)
+2. [Emurgo Research: How Do UTXO Contracts Work?](https://github.com/Emurgo/Emurgo-Research/blob/master/smart-contracts/Unlocking%20The%20Potential%20Of%20The%20UTXO%20Model.md
+) (First 2 sections)
+
+3. [Advanced ErgoScript Whitepaper](https://ergoplatform.org/docs/AdvancedErgoScriptTutorial.pdf)
+
+4. [Emurgo Research: High Level Design Patterns In EUTXO Systems](https://github.com/Emurgo/Emurgo-Research/blob/master/smart-contracts/High%20Level%20Design%20Patterns%20In%20Extended%20UTXO%20Systems.md)
+
+The first two links should enlighten you to the majority of the basics, and the links thereafter are more advanced deep dives.
 
 
 ## How To Contribute

@@ -11,6 +11,7 @@ For an overarching summary of how everything in this repo works, please referenc
 
 ## Table Of Contents
 - [ErgoScript Examples](<#Ergoscript-examples>)
+- [Extra Resources To Get Started](<#Extra-Resources-To-Get-Started>)
 - [How To Contribute](<#how-to-contribute>)
 
 

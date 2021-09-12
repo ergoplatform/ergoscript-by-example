@@ -53,14 +53,6 @@ val sndHodler = blockchainSim.newParty("SND Hodler")
 // Double-chain Swap Contracts - Swap Contract                                    //
 ///////////////////////////////////////////////////////////////////////////////////
 
-// The main spending path ensures that the box can be spent only in a transaction that produces an output with 60 tokens of type TKN and gives them to Bob 
-// (Bob can reclaim the box after). Moreover, the last condition (OUTPUTS(0).R4[Col[Byte]].get == SELF.id) ensures that if Bob has multiple of such boxes 
-// outstanding at a given time, each will produce a separate output that identifies the corresponding input.  
-// This condition prevents the following attack: if Bob has two of such boxes outstanding but the last condition is not present, then they can be both used in a single
-// transaction that contains just one output with 60 tokens of type “TKN” — the script of each input box will be individually satisfied, but Bob will get only 
-// half of what owed to him.
-// The buyerPK check is the refund spending path.
-
 val swapScript = s"""
   {
     val defined = OUTPUTS(0).R2[Coll[(Coll[Byte], Long)]].isDefined && OUTPUTS(0).R4[Coll[Byte]].isDefined
@@ -79,6 +71,7 @@ val sndTokensContract = ErgoScriptCompiler.compile(Map("tokenId" -> sndToken.tok
                                                        "tokenAmount" -> sndTokenAmount,
                                                        "buyerPk" -> fstHodler.wallet.getAddress.pubKey
                                                       ), swapScript)
+
 val fstTokensContract = ErgoScriptCompiler.compile(Map("tokenId" -> fstToken.tokenId, 
                                                        "tokenAmount" -> fstTokenAmount,
                                                        "buyerPk" -> sndHodler.wallet.getAddress.pubKey
@@ -178,7 +171,7 @@ val swapTransaction = Transaction(
     inputs = List(sndOrderTransactionSigned.outputs(0), fstOrderTransactionSigned.outputs(0)),
     outputs = List(fstOut, sndOut),
     sendChangeTo = fstHodler.wallet.getAddress,
-    fee = 1000000L
+    fee = MinTxFee
   )
 
 println(swapTransaction)

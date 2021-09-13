@@ -1,4 +1,4 @@
-"Simple Send"
+Simple Send
 =================================
 
 * Author: Crypto Cream
@@ -9,10 +9,10 @@
 
 Description
 ----------
-A simple starting contract to help you understand the basics of the UTxO model and Ergo Protocol.
+A simple starting contract to help you understand the basics of the UTxO model and the Ergo Protocol.
 
 1. Creates box for depositing funds from a sender party
-2. The Sender party signs transaction so funds are sent and locked into the a box under the smart contract, which is just a simple true statement for demonstration purpose
+2. The sender party signs transaction so funds are sent and locked into the a box under the smart contract, which is just a simple true statement for demonstration purpose
 3. Another box is created to withdraw funds
 4. This time the script being used is the receiver party's public key, therefore giving the receiver party permission to spend the unspent box
 5. The transaction is signed by the sender, allowing the unspent box to be created, effectivley moving funds from the sender party to the receiver party

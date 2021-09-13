@@ -1,4 +1,4 @@
-"Title"
+"Simple Send"
 =================================
 
 * Author: Crypto Cream

@@ -25,7 +25,7 @@ A simple starting contract to help you understand the basics of the UTxO model a
   - `Box`, `INPUTS`, `OUTPUTS`
   - A complete list is available [here](https://github.com/ScorexFoundation/sigmastate-interpreter/blob/develop/docs/LangSpec.md)
 - A `Box` is essentially a UTXO and consists of up to ten registers for storing data. Similar to Bitcoin, a transaction spends one or more existing boxes (denoted using the `INPUTS` array), and creates one or more new boxes (denoted using the `OUTPUTS` array)
-- ErgoScript's syntax is a subset of Scala's. However, knowledge of Scala is not necessary to learn ErgoScript because the amount of Scala needed to write ErgoScript is small e.g. `val = `
+- ErgoScript's syntax is a subset of Scala's. However, knowledge of Scala is not necessary to learn ErgoScript because the amount of Scala needed to write ErgoScript is small e.g. `val`
 - Note that arrays in Scala are accessed using round parentheses, not square brackets like in Java or Python. Thus, `OUTPUTS(0)` refers to the first element of the `OUTPUTS` array
 - Unlike Scala, ErgoScript does not support the `var` keyword, and thus everything is immutable
 
@@ -34,7 +34,7 @@ A simple starting contract to help you understand the basics of the UTxO model a
 An Ergo transaction consists of:
 
 1. One or more **Input** boxes (source of funds). These boxes must already exist and will be destroyed. The guard script in each of these boxes will be evaluated and must return `true` for the transaction to be considered valid
-2. One or more **Output** boxes (destination of funds). These boxes will be created
+2. One or more **Output** boxes (destination of funds), these boxes will be created
 
 Code
 ----------

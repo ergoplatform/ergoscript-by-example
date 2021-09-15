@@ -1,32 +1,30 @@
-Single Chain Swap
-=================================
+# Double Chain Swap
 
-* Author: Keith Lim (aka kushti)
-* Created: September 12 2021
-* License: CC0
-* Difficulty: Intermediate
-* Ergo Playground Link: [Double Chain Swap Contract](https://scastie.scala-lang.org/EPnXlipFRgaGRSL8mQf0mw)
+- Author: Keith Lim
+- Created: September 12 2021
+- License: CC0
+- Difficulty: Intermediate
+- Ergo Playground Link: [Double Chain Swap Contract](https://scastie.scala-lang.org/EPnXlipFRgaGRSL8mQf0mw)
 
-Description
-----------
+## Description
+
 In this example, we explore the double-chain swap contracts which allow swapping of different tokens using ergoscript.
 
 For our example at hand, consider a scenario where FstHodler and SndHodler want to exchange their tokens.
-They agree that FstHodler (the seller) will give Bob (the buyer) 60 tokens of type FST in exchange for 60 tokens of type SND.
+They agree that FstHodler will give SndHodler 60 tokens of type FST in exchange for 60 tokens of type SND.
 
 In the interactive example below, we explore how to do a test swap between FstHodler and SndHodler.
 
-Code
-----------
-#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/EPnXlipFRgaGRSL8mQf0mw)
+## Code
 
+#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/EPnXlipFRgaGRSL8mQf0mw)
 
 ```scala
 import org.ergoplatform.compiler.ErgoScalaCompiler._
 import org.ergoplatform.playgroundenv.utils.ErgoScriptCompiler
 import org.ergoplatform.playground._
 import org.ergoplatform.Pay2SAddress
-import sigmastate.eval.Extensions._ 
+import sigmastate.eval.Extensions._
 import scorex.crypto.hash.{Blake2b256}
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -43,10 +41,10 @@ val fstTokenAmount = 60L
 val sndToken = blockchainSim.newToken("SND")
 val sndTokenAmount = 60L
 
-// Define a swapper Bob (with a wallet)
+// Define a swapper fstHodler (with a wallet)
 val fstHodler = blockchainSim.newParty("FST Hodler")
 
-// Define a swapper Alice (with a wallet)
+// Define a swapper sndHodler (with a wallet)
 val sndHodler = blockchainSim.newParty("SND Hodler")
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -67,12 +65,12 @@ val swapScript = s"""
 """.stripMargin
 
 // Compile the contract with an included `Map` which specifies what the values of given parameters are going to be hard-coded into the contract
-val sndTokensContract = ErgoScriptCompiler.compile(Map("tokenId" -> sndToken.tokenId, 
+val sndTokensContract = ErgoScriptCompiler.compile(Map("tokenId" -> sndToken.tokenId,
                                                        "tokenAmount" -> sndTokenAmount,
                                                        "buyerPk" -> fstHodler.wallet.getAddress.pubKey
                                                       ), swapScript)
 
-val fstTokensContract = ErgoScriptCompiler.compile(Map("tokenId" -> fstToken.tokenId, 
+val fstTokensContract = ErgoScriptCompiler.compile(Map("tokenId" -> fstToken.tokenId,
                                                        "tokenAmount" -> fstTokenAmount,
                                                        "buyerPk" -> sndHodler.wallet.getAddress.pubKey
                                                       ), swapScript)
@@ -82,12 +80,12 @@ val fstTokensContract = ErgoScriptCompiler.compile(Map("tokenId" -> fstToken.tok
 ///////////////////////////////////////////////////////////////////////////////////
 
 // Define initial hodler balance
-val nanoergsInErg = 1000000000L 
+val nanoergsInErg = 1000000000L
 val fstHodlerFunds = 2 * nanoergsInErg
 val sndHodlerFunds = 2 * nanoergsInErg
 
 fstHodler.generateUnspentBoxes(
-      toSpend       = fstHodlerFunds, 
+      toSpend       = fstHodlerFunds,
       tokensToSpend = List(fstToken -> fstTokenAmount))
 fstHodler.printUnspentAssets()
 
@@ -118,7 +116,7 @@ println("-----------")
 
 
 sndHodler.generateUnspentBoxes(
-      toSpend       = sndHodlerFunds, 
+      toSpend       = sndHodlerFunds,
       tokensToSpend = List(sndToken -> sndTokenAmount))
 sndHodler.printUnspentAssets()
 

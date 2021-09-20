@@ -1,4 +1,5 @@
-# Double Chain Swap
+Double Chain Swap
+=================================
 
 - Author: Keith Lim
 - Created: September 12 2021
@@ -6,7 +7,8 @@
 - Difficulty: Intermediate
 - Ergo Playground Link: [Double Chain Basic Swap Contract](https://scastie.scala-lang.org/b7rvMvR4QfecbJhIiu8Xsg)
 
-## Description
+Description
+-----------
 
 In this example, we explore the double-chain swap contracts which allow swapping of different tokens using ergoscript.
 
@@ -15,7 +17,8 @@ They agree that FstHodler will swap with SndHodler 60 tokens of type FST in exch
 
 In the example below, we explore how to do a swap between FstHodler and SndHodler.
 
-## Code
+Code
+----------
 
 #### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/b7rvMvR4QfecbJhIiu8Xsg)
 

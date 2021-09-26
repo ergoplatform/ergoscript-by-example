@@ -24,6 +24,7 @@ For an overarching summary of how everything in this repo works, please referenc
 | 3 | Starter | [Simple Send](simpleSend.md) |
 | 4 | Intermediate | [Double-Chain Swap Contracts](doubleChainSwap.md) |
 | 5 | Beginner | [Timed Fund Contract](timedFund.md) |
+| 6 | Beginner | [Grantor/Beneficiary Pin Lock Contract](grantorBeneficiaryPinLock.md) |
 
 ## Extra Resources To Get Started
 If you are unfamiliar with the Extended UTXO model, smart contracts, or Ergo specifically, the above examples may be a little bit challenging to jump straight into. As such the following links below are recommended resources for getting a solid background in understanding what is going on:

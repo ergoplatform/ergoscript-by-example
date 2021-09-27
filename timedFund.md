@@ -1,4 +1,4 @@
-Double Chain Swap
+Timed Fund
 =================================
 
 - Author: Catalyst244

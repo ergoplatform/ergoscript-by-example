@@ -10,13 +10,13 @@ Timed Fund
 Description
 -----------
 
-A simple starting contract to help you to have a better understanding on blockchain height and mixing singma-statements with other statements in Ergo.
+A simple starting contract to help you to have a better understanding on blockchain height and mixing sigma-statements with other statements in Ergo.
 
 In this example first party (Alice) is going to create a deposit which is going to be available to second party (Bob) until a certail time 
 after that Alice has the ability to take the fund back and Bob doesn't have access anymore.
 
 This is a very simple and plain contract to show the usage of height and mixing sigma-statements with other statements 
-but using this contract you can create more complex contracts like crawdfunding.
+but using this contract you can create more complex contracts like crowdfunding.
 
 Code
 ----------

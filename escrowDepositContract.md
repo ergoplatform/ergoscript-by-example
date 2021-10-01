@@ -5,7 +5,7 @@
 * Created: 2021-09-30
 * License: CC0
 * Difficulty: (Beginner)
-* Ergo Playground Link: [Escrow deposit contract](https://scastie.scala-lang.org/sjfJosUiQuiqonZbLI6KFw)
+* Ergo Playground Link: [Escrow deposit contract](https://scastie.scala-lang.org/8xEnJ05nRfaSsiYsWzWBag)
 
 Description
 ----------
@@ -19,7 +19,7 @@ The Validator can either force the payment or the refund after a defined period,
 
 Code
 ----------
-#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/sjfJosUiQuiqonZbLI6KFw)
+#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/8xEnJ05nRfaSsiYsWzWBag)
 ```scala
 
 // Escrow use case
@@ -47,7 +47,7 @@ val depositAmount = 100*nanoergsInErg
 // can finalize or cancel the purchase
 // 720 block per day, starts after 3 weeks
 val start_litigation = blockchainSim.getHeight + (720 * 7 * 3)
-println("start_litigation perio as height: " + start_litigation)
+println("Starting the litigation period at height: " + start_litigation)
 
 // Provide funds to the buyer
 buyer.generateUnspentBoxes(toSpend = buyerFunds)

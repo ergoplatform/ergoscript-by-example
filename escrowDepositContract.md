@@ -5,7 +5,7 @@
 * Created: 2021-09-30
 * License: CC0
 * Difficulty: (Beginner)
-* Ergo Playground Link: [Escrow deposit contract](https://scastie.scala-lang.org/8xEnJ05nRfaSsiYsWzWBag)
+* Ergo Playground Link: [Escrow deposit contract](https://scastie.scala-lang.org/ff7NAiXGRYKChAhsRDrMZA)
 
 Description
 ----------
@@ -19,7 +19,7 @@ The Validator can either force the payment or the refund after a defined period,
 
 Code
 ----------
-#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/8xEnJ05nRfaSsiYsWzWBag)
+#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/ff7NAiXGRYKChAhsRDrMZA)
 ```scala
 
 // Escrow use case

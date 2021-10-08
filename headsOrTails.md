@@ -18,10 +18,10 @@ After the time limit the players can widthdraw the funds if the game did not occ
 Once the funds are engaged in the game, only the winner can widthdraw them.
 A failed widthdrawal triggers an exception signing the transaction that is catched by the code.
 
-This example ilustrate how to protect an output box allowing to spend it only with a specific script, here our game contract.
-The randomness in the game contract uses a similar pattern than in the Ergo raffle contract: https://github.com/ErgoRaffle/raffle-backend/blob/master/raffle-backend/app/raffle/RaffleContract.scala
-  The output box id which is a hash is sliced (twice) and both parts are converted to int and compared.
-  This hash is regenerated when the transaction is signed, allowing to choose a new winner for each game.
+This example ilustrate how to protect an output box allowing to spend it only with a specific script, here our game contract.<br />
+The randomness in the game contract uses a similar pattern than in the Ergo raffle contract: https://github.com/ErgoRaffle/raffle-backend/blob/master/raffle-backend/app/raffle/RaffleContract.scala.<br />
+  - The output box id which is a hash is sliced (twice) and both parts are converted to int and compared.<br />
+  - This hash is regenerated when the transaction is signed, allowing to choose a new winner for each game.
 
 Code
 ----------

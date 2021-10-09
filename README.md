@@ -26,6 +26,7 @@ For an overarching summary of how everything in this repo works, please referenc
 | 5 | Beginner | [Timed Fund Contract](timedFund.md) |
 | 6 | Beginner | [Grantor/Beneficiary Pin Lock Contract](grantorBeneficiaryPinLock.md) |
 | 7 | Beginner | [Escrow Deposit Contract](escrowDepositContract.md) |
+| 8 | Expert | [Token sales service contract](tokenSalesService.md) |
 
 
 ## Extra Resources To Get Started

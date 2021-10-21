@@ -5,7 +5,7 @@ Token Sales Service
 * Created: October 08 2021
 * License: CC0
 * Difficulty: Expert
-* Ergo Playground Link: [Token Sales Service](https://scastie.scala-lang.org/w1Vudy1wTi6mgnSnpjccsQ)
+* Ergo Playground Link: [Token Sales Service](https://scastie.scala-lang.org/w2XmzPXeR5K4lyt4PCUcJw)
 
 Description
 ----------
@@ -17,7 +17,7 @@ Our service sells ServiceTokens according to the price defined in the configBox,
 
 Code
 ----------
-#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/w1Vudy1wTi6mgnSnpjccsQ)
+#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/w2XmzPXeR5K4lyt4PCUcJw)
 ```scala
 import org.ergoplatform.compiler.ErgoScalaCompiler._
 import org.ergoplatform.playgroundenv.utils.ErgoScriptCompiler
@@ -69,8 +69,7 @@ println("-----------")
 // Generate the initial balance in Alice's wallet (as a buyer of the ServiceToken from the service)
 var aliceBalance = 500 * nanoergsInErg
 alice.generateUnspentBoxes(
-      toSpend       = aliceBalance,
-      tokensToSpend = List(serviceToken -> serviceTokenAmount, configNFT -> configNFTAmount)
+      toSpend       = aliceBalance
 )
 alice.printUnspentAssets()
 println("-----------")

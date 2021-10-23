@@ -9,19 +9,19 @@
 
 Description
 ----------
-This script simulates a "Heads or Tails" (flip coin) game between two players.
-It runs 5 games in a row, each player engaging 1 ERG for each round, the winner get all the founds minus the transaction fees.
-
-One player create the game and choose 0 or 1
-The second player needs to guess the first player choice
-To hide the first player choice, he creates a secret and a hash of the answer to provide the hashed result to the other player.
-The first player also choose the game price and the duration.
-The funds of the first player can be refunded after the end of the game if it did not occured
-The second player is able to create the game transaction, providing his choice and the hash of the choice of the player 1
-Once the transaction is signed, the first player can reaveal is choice and its secret to the second player
-Both players tries to widthraw the fund only the winner can succeed
-If the player 1 does not provide its secret and answer, the second player wins by default at the end of the game duration
-
+This script simulates a "Heads or Tails" (flip coin) game between two players.<br />
+It runs 5 games in a row, each player engaging 1 ERG for each round, the winner get all the founds minus the transaction fees.<br />
+<br />
+One player create the game and choose 0 or 1.<br />
+The second player needs to guess the first player choice.<br />
+To hide the first player choice, he creates a secret and a hash of the answer to provide the hashed result to the other player.<br />
+The first player also choose the game price and the duration.<br />
+The funds of the first player can be refunded after the end of the game if it did not occured.<br />
+The second player is able to create the game transaction, providing his choice and the hash of the choice of the player 1.<br />
+Once the transaction is signed, the first player can reaveal is choice and its secret to the second player.<br />
+Both players tries to widthraw the fund only the winner can succeed.<br />
+If the player 1 does not provide its secret and answer, the second player wins by default at the end of the game duration.<br />
+<br />
 
 Code
 ----------
@@ -29,15 +29,15 @@ Code
 ```scala
 
 // Heads or Tails game
-//   One player create the game and choose 0 or 1
-//   The second player needs to guess the first player choice
+//   One player create the game and choose 0 or 1.
+//   The second player needs to guess the first player choice.
 //   To hide the first player choice, he creates a secret and an hash to provide the hashed result to the other player.
-//   The first player also choose the game price and the duration
-//   The funds of the first player can be refunded after the end of the game if it did not occured
-//   The second player is able to create the game transaction, providing his choice and the hash of the choice of the player 1
-//   Once the transaction is signed, the first player can reaveal is choice and its secret to the second player
-//   Both players tries to widthraw the fund only the winner can succeed
-//   If the player 1 does not provide its secret and answer, the player 2 wins by default at the end of the game duration
+//   The first player also choose the game price and the duration.
+//   The funds of the first player can be refunded after the end of the game if it did not occured.
+//   The second player is able to create the game transaction, providing his choice and the hash of the choice of the player 1.
+//   Once the transaction is signed, the first player can reaveal is choice and its secret to the second player.
+//   Both players tries to widthraw the fund only the winner can succeed.
+//   If the player 1 does not provide its secret and answer, the player 2 wins by default at the end of the game duration.
 
 // Required import for the Ergo Playground
 import org.ergoplatform.compiler.ErgoScalaCompiler._

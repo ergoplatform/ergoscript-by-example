@@ -22,6 +22,9 @@ Once the transaction is signed, the first player can reaveal is choice and its s
 Both players tries to widthraw the fund only the winner can succeed.<br />
 If the player 1 does not provide its secret and answer, the second player wins by default at the end of the game duration.<br />
 <br />
+Diagram of the game:<br />
+![alt text](https://i.ibb.co/pbcpvXr/heads-or-tails-Diagram-3.png)
+<br />
 
 Code
 ----------

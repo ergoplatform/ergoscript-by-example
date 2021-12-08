@@ -12,6 +12,7 @@ For an overarching summary of how everything in this repo works, please referenc
 ## Table Of Contents
 - [ErgoScript Examples](<#Ergoscript-examples>)
 - [Extra Resources To Get Started](<#Extra-Resources-To-Get-Started>)
+- [Other Resources](<#other-resources>)
 - [How To Contribute](<#how-to-contribute>)
 
 
@@ -43,7 +44,9 @@ If you are unfamiliar with the Extended UTXO model, smart contracts, or Ergo spe
 
 The first two links should enlighten you to the majority of the basics, and the links thereafter are more advanced deep dives.
 
+## Other Resources
 
+- [Video: Ergoscript examples using AppKit](https://www.youtube.com/watch?v=Md5s-XV6-Hs) This video covers the lifecycle of a smart contract on ergo, how to interact with the blockchain. It also covers step by step some of the examples in this repository.
 
 ## How To Contribute
 

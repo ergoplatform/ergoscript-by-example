@@ -25,7 +25,7 @@ Please note, this script is not safe under certain conditions, such as player 2 
 and the next block spend this block regardless of the correctness, as the game expires. Also example such as amount of players is not power of 2 will not work. <br />
 It is possible to request a recreation of the lobby contract with all it's tokens as is shown in the picture below. <br />
 <br />
-This example tries to demonstrate some less frequent constructions such as forall() and parallelization of contracts. <br/ >
+This example tries to demonstrate some less frequent constructions such as forall() and parallelization of contracts. <br />
 It was inspired by the [Heads or Tails game Contract](https://github.com/ergoplatform/ergoscript-by-example/blob/main/headsOrTails.md) 
 example and [High Level Design Patterns In Extended UTXO Systems - Parallelized Protocols](https://github.com/Emurgo/Emurgo-Research/blob/master/smart-contracts/High%20Level%20Design%20Patterns%20In%20Extended%20UTXO%20Systems.md#parallelized-protocols)<br />
 <br />

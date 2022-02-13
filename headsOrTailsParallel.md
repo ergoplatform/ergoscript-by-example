@@ -1,11 +1,11 @@
-"Heads or Tails game Contract"
+"Heads or Tails game Contract with Parallelization"
 =================================
 
 * Author: The-Huginn
 * Created: 12/2/2022
 * License: CC0
 * Difficulty: (Expert)
-* Ergo Playground Link: [Heads or Tails](https://scastie.scala-lang.org/vOsZerQpRdO2y2X0ruKP7w)
+* Ergo Playground Link: [Heads or Tails Parallel](https://scastie.scala-lang.org/vOsZerQpRdO2y2X0ruKP7w)
 
 Description
 ----------

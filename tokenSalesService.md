@@ -15,6 +15,10 @@ In this scenario, we have a configBox as dataInput of our service, which contain
 
 Our service sells ServiceTokens according to the price defined in the configBox, which can be protected under any script. Suppose the owner of ConfigNFT decides to change the price of the tokens or the deposit address. In that case, the values can be changed in the registers (R4 as ownerScript and R5 as priceOfServiceToken) of the mentioned box. Thus, no change is required in the serviceContract.
 
+Diagram
+----------
+![Token sale diagram](./Resources/token_sales_service.png)
+
 Code
 ----------
 #### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/w2XmzPXeR5K4lyt4PCUcJw)

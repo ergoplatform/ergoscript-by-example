@@ -24,7 +24,7 @@ _Despite the additional proof `grantorPk || beneficiaryPk`, note that this contr
 Code
 ----------
 
-#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/wGP2oQ3ZQSSV5dqhOn7auA)
+#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/vhkNicsSSgaNrFYtSQWQnw)
 
 ```scala
 import org.ergoplatform.compiler.ErgoScalaCompiler._
@@ -89,12 +89,12 @@ println("-----------")
 // Note that we use parentheses to enforce this one-of-two signature AND the following pin check.
 // Without parentheses, the grantor would be able to withdraw funds without the pin.
 
-// sigmaProp(INPUTS(0).R4[Coll[Byte]].get == blake2b256(OUTPUTS(0).R4[Coll[Byte]].get))
+// sigmaProp(SELF.R4[Coll[Byte]].get == blake2b256(OUTPUTS(0).R4[Coll[Byte]].get))
 // Please refer to simple pin lock contract for details about this expression
 // that checks the hash of the pin number.
 
 val pinLockScript = s"""
-  (grantorPk || beneficiaryPk) && sigmaProp(INPUTS(0).R4[Coll[Byte]].get == blake2b256(OUTPUTS(0).R4[Coll[Byte]].get))
+  (grantorPk || beneficiaryPk) && sigmaProp(SELF.R4[Coll[Byte]].get == blake2b256(OUTPUTS(0).R4[Coll[Byte]].get))
 """.stripMargin
 
 // Compile a tailor-made contract with a `Map` of key to values required by pinLockScript

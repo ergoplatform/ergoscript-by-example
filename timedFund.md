@@ -63,7 +63,7 @@ println("---------------------")
 // This is a very simple and plain contract to show the usage of height and mixing sigma-statements with other statements.
 // But using this contract you can create more complex contracts like crawdfunding.
 
-val timedFundScript = s""" (alicePK && HEIGHT > deadline) || (bobPK && HEIGHT <= deadline) """.stripMargin
+val timedFundScript = s""" alicePK && sigmaProp(HEIGHT > deadline) || bobPK && sigmaProp(HEIGHT <= deadline) """.stripMargin
 
 // In a real world contract you should set the deadline based on the current hight of the chain which is the sequential block number of the block in which the script is evaluated.
 // You can see the average time it takes to add a block to the chain in explorer stats: https://explorer.ergoplatform.com/en/stats

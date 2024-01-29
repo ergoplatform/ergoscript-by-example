@@ -5,7 +5,7 @@ Pin Lock Contract
 * Created: October 2 2020
 * License: CC0
 * Difficulty: Beginner
-* Ergo Playground Link: [Pin Lock Contract](https://scastie.scala-lang.org/KdWtOMjrTx2zb7wr2shPAA)
+* Ergo Playground Link: [Pin Lock Contract](https://scastie.scala-lang.org/FBQnxS8iQBqrt8MM2dykLw)
 
 Description
 ----------
@@ -19,7 +19,7 @@ Do note, this contract is purely intended to be used as an educational example. 
 
 Code
 ----------
-#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/KdWtOMjrTx2zb7wr2shPAA)
+#### [Click Here To Run The Code Via The Ergo Playground](https://scastie.scala-lang.org/FBQnxS8iQBqrt8MM2dykLw)
 
 ```scala
 
@@ -39,7 +39,7 @@ import scorex.crypto.hash.{Blake2b256}
 // in R4 of the output box as cleartext and hashed to check against
 // the stored hash in the input box R4.
 val pinLockScript = s"""
-  sigmaProp(INPUTS(0).R4[Coll[Byte]].get == blake2b256(OUTPUTS(0).R4[Coll[Byte]].get))
+  sigmaProp(SELF.R4[Coll[Byte]].get == blake2b256(OUTPUTS(0).R4[Coll[Byte]].get))
 """.stripMargin
 val pinLockContract = ErgoScriptCompiler.compile(Map(), pinLockScript)
 
